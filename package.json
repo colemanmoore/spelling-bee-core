@@ -1,0 +1,19 @@
+{
+  "name": "@colemanmoore/spelling-bee-core",
+  "version": "1.0.0",
+  "description": "",
+  "exports": "./src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node -r dotenv/config ./test/all.js"
+  },
+  "author": "Coleman Moore",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^8.7.3",
+    "underscore": "^1.13.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
+  }
+}
