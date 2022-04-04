@@ -110,6 +110,13 @@ export function Database() {
         })
     }
 
+    function clearOldestGame() {
+        return new Promise((resolve, reject) => {
+            connection.query(`DELETE FROM games g WHERE g.created_at < (NOW() + INTERVAL '-31 day')`,
+                (err, result) => queryCallback(resolve, reject, err, result))
+        })
+    }
+
     return {
         initialize,
         getAllWordsFromDictionary,
@@ -117,6 +124,7 @@ export function Database() {
         addWordsToDictionary,
         getWordFromDictionary,
         saveGame,
-        getLatestGame
+        getLatestGame,
+        clearOldestGame
     }
 }
