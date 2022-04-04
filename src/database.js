@@ -62,6 +62,32 @@ export function Database() {
         })
     }
 
+    function addWordToDictionary({ word, unique_letters }) {
+        return new Promise((resolve, reject) => {
+            connection.query(
+                `INSERT INTO dictionary(word, unique_letters) VALUES (${word}, ${unique_letters}) ON CONFLICT (word) DO NOTHING;`,
+                (err, result) => queryCallback(resolve, reject, err, result)
+            )
+        })
+    }
+
+    function addWordsToDictionary(words) {
+        const values = words.map(w => `('${w.word}',${w.unique_letters})`)
+        return new Promise((resolve, reject) => {
+            connection.query(`INSERT INTO dictionary(word, unique_letters) VALUES ${values} ON CONFLICT (word) DO NOTHING;`,
+                (err, result) => queryCallback(resolve, reject, err, result))
+        })
+    }
+
+    function getWordFromDictionary(word) {
+        return new Promise((resolve, reject) => {
+            connection.query(
+                `SELECT * FROM dictionary d WHERE d.word = '${word}';`,
+                (err, result) => queryCallback(resolve, reject, err, result)
+            )
+        })
+    }
+
     function saveGame(game) {
         return new Promise((resolve, reject) => {
             connection.query(
@@ -87,6 +113,9 @@ export function Database() {
     return {
         initialize,
         getAllWordsFromDictionary,
+        addWordToDictionary,
+        addWordsToDictionary,
+        getWordFromDictionary,
         saveGame,
         getLatestGame
     }

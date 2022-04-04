@@ -1,6 +1,6 @@
 {
   "name": "@colemanmoore/spelling-bee-core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "exports": "./index.js",
   "type": "module",
