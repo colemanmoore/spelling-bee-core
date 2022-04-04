@@ -1,8 +1,8 @@
 {
   "name": "@colemanmoore/spelling-bee-core",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
-  "exports": "./src/index.js",
+  "exports": "./index.js",
   "type": "module",
   "scripts": {
     "test": "node -r dotenv/config ./test/all.js"
