@@ -17,6 +17,8 @@ export function SpellingBee(database) {
         return
     }
 
+    database.initialize()
+
     const {
         getAllWordsFromDictionary,
         getLatestGame

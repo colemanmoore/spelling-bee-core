@@ -17,12 +17,13 @@ export class Game {
         this.letters = letters.map(l => l.toLowerCase())
         this.keyLetter = keyLetter.toLowerCase()
 
-        this.#database = database
+        this.#database = database        
         this.#dictionary = dictionary
         this.#answers = this.getQualifyingWords()
 
         this.pangrams = this.getAllPangrams(letters.length)
         this.maximumScore = possibleScore(this.#answers)
+
     }
 
     getAllLetters() {
